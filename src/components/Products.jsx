@@ -93,6 +93,16 @@ export default function Products() {
       specs: ['Intel Core i5 13th Gen', '16GB DDR4 RAM', '512GB NVMe SSD', 'Windows 11 Pro Pre-installed']
     },
     {
+      id: 'hp-prodesk',
+      name: 'HP ProDesk 400 G9 SFF Desktop',
+      category: 'desktops',
+      brand: 'HP',
+      icon: <Monitor size={32} className="prod-icon" />,
+      image: '/dell-optiplex.png',
+      desc: 'Space-saving small form factor business desktop, configured for everyday productivity, robust security features, and high energy efficiency.',
+      specs: ['Intel Core i5 12th Gen', '8GB DDR4 RAM', '512GB PCIe NVMe SSD', 'HP Wolf Security for Business']
+    },
+    {
       id: 'hp-elitebook',
       name: 'HP EliteBook 840 G10 Business Laptop',
       category: 'laptops',
@@ -101,6 +111,16 @@ export default function Products() {
       image: '/hp-elitebook.png',
       desc: 'Premium enterprise laptop engineered with multi-layered hardware security and heavy workload computational performance.',
       specs: ['Intel Core i7 13th Gen', '16GB DDR5 RAM / 512GB SSD', 'HP Sure Start Self-Healing BIOS', '14" WUXGA Anti-Glare Screen']
+    },
+    {
+      id: 'lenovo-thinkpad',
+      name: 'Lenovo ThinkPad L14 Gen 4 Business Laptop',
+      category: 'laptops',
+      brand: 'Lenovo',
+      icon: <Laptop size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
+      desc: 'Durability-focused business laptop known for its robust construction, comfortable keyboard, and integrated hardware security.',
+      specs: ['AMD Ryzen 5 PRO Processor', '16GB DDR4 RAM', '512GB SSD Storage', 'MIL-STD-810H Military Grade Durability']
     },
     {
       id: 'hp-z2-workstation',
@@ -113,6 +133,16 @@ export default function Products() {
       specs: ['Intel Xeon W-1300 Processor', '32GB ECC DDR5 RAM', 'NVIDIA RTX A2000 12GB GPU', '700W 90% Efficient PSU']
     },
     {
+      id: 'dell-precision-tower',
+      name: 'Dell Precision 3660 Tower Workstation',
+      category: 'workstations',
+      brand: 'Dell',
+      icon: <Cpu size={32} className="prod-icon" />,
+      image: '/dell-optiplex.png',
+      desc: 'Entry-level tower workstation offering high scalability, ISV-certification for engineering/CAD software, and VR creation.',
+      specs: ['Intel Core i7 13700K', '32GB DDR5 ECC RAM', 'NVIDIA T1000 8GB GPU', '512GB SSD + 2TB SATA HDD']
+    },
+    {
       id: 'dell-precision-mw',
       name: 'Dell Precision 5570 Mobile Workstation',
       category: 'mobile_workstations',
@@ -123,6 +153,16 @@ export default function Products() {
       specs: ['Intel Core i9 12th Gen (14-Core)', '32GB DDR5 RAM / 1TB SSD', 'NVIDIA RTX A1000 Professional GPU', '15.6" UHD+ HDR Touch Display']
     },
     {
+      id: 'lenovo-thinkpad-p16',
+      name: 'Lenovo ThinkPad P16 Gen 1 Mobile Workstation',
+      category: 'mobile_workstations',
+      brand: 'Lenovo',
+      icon: <Laptop size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
+      desc: 'Ultra-performance portable workstation engineered to tackle high-end data modeling, CAD rendering, and simulation tasks.',
+      specs: ['Intel Core i7 HX-series', '32GB DDR5 RAM', 'NVIDIA RTX A2000 Laptop GPU', '16" WQXGA 100% sRGB Screen']
+    },
+    {
       id: 'samsung-tab-active',
       name: 'Samsung Galaxy Tab Active4 Pro',
       category: 'tablets',
@@ -131,6 +171,16 @@ export default function Products() {
       image: '/hp-elitebook.png',
       desc: 'Military-grade rugged tablet engineered for field service engineers, healthcare workers, and tough outdoor environments.',
       specs: ['10.1" WUXGA Gorilla Glass 5', 'MIL-STD-810H & IP68 Rated', 'Support for glove touch & S-Pen', 'Replaceable 7600 mAh battery']
+    },
+    {
+      id: 'ipad-pro-rugged',
+      name: 'Apple iPad Pro 12.9" with Rugged Case',
+      category: 'tablets',
+      brand: 'Apple',
+      icon: <Tablet size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
+      desc: 'High-performance iPad Pro paired with a military-grade OtterBox Defender protective case for heavy on-site reports and field inspection work.',
+      specs: ['Apple M2 Silicon Chip', '256GB High-Speed Storage', '12.9" Liquid Retina XDR display', 'OtterBox Defender Case Bundled']
     },
     {
       id: 'hp-laserjet-printer',
@@ -310,18 +360,10 @@ export default function Products() {
                       style={{ cursor: 'pointer' }}
                     >
                       <div className="prod-badge-brand">{prod.brand}</div>
-                      <div className="prod-icon-box">{prod.icon}</div>
-                      <h3 className="product-card-title">{prod.name}</h3>
-                      <p className="product-card-desc">{prod.desc}</p>
-                      
-                      <div className="prod-specs-box">
-                        <h4>Key Specs:</h4>
-                        <ul>
-                          {prod.specs.map((spec, index) => (
-                            <li key={index}>{spec}</li>
-                          ))}
-                        </ul>
+                      <div className="prod-card-image-wrapper">
+                        <img src={prod.image} alt={prod.name} className="product-card-image" />
                       </div>
+                      <h3 className="product-card-title">{prod.name}</h3>
 
                       <button 
                         className="btn btn-primary product-quote-btn"
