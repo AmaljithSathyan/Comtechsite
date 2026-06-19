@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ShieldAlert, Laptop, Network, HardDrive, Printer, Tablet, Monitor, Cpu } from 'lucide-react';
+import { Search, ShieldAlert, Laptop, Network, HardDrive, Printer, Tablet, Monitor, Cpu, X } from 'lucide-react';
 import './Products.css';
 
 const categoryDivisions = [
@@ -49,7 +49,7 @@ const categoryDivisions = [
     id: 'printers',
     tag: 'PRINTERS',
     title: 'High-yield, reliable office printing',
-    desc: 'Streamline paperwork with high-volume, multi-function laser and ink tank printers built for fast double-sided printing and scanning.',
+    desc: 'Streamline paperwork with high-volume, multi-function laser and ink tank printers built for double-sided printing and scanning.',
     image: '/printers-banner.png'
   }
 ];
@@ -58,6 +58,7 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [showCategoryGrid, setShowCategoryGrid] = useState(false);
+  const [activeProductModal, setActiveProductModal] = useState(null);
 
   const categories = [
     { id: 'all', label: 'All products' },
@@ -77,6 +78,7 @@ export default function Products() {
       category: 'firewalls',
       brand: 'Sophos',
       icon: <Network size={32} className="prod-icon" />,
+      image: '/sophos-xgs.png',
       desc: 'Next-Gen Firewall with dual-processor architecture and integrated hardware acceleration for deep packet inspection and SD-WAN.',
       specs: ['10 Gbps Firewall Throughput', '1.5 Gbps Threat Protection', 'Integrated SD-WAN', 'SFP Fiber Port Support']
     },
@@ -86,6 +88,7 @@ export default function Products() {
       category: 'desktops',
       brand: 'Dell',
       icon: <Monitor size={32} className="prod-icon" />,
+      image: '/dell-optiplex.png',
       desc: 'High-performance business desktop computer configured for general business tasks, office apps, and multi-display output.',
       specs: ['Intel Core i5 13th Gen', '16GB DDR4 RAM', '512GB NVMe SSD', 'Windows 11 Pro Pre-installed']
     },
@@ -95,6 +98,7 @@ export default function Products() {
       category: 'laptops',
       brand: 'HP',
       icon: <Laptop size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
       desc: 'Premium enterprise laptop engineered with multi-layered hardware security and heavy workload computational performance.',
       specs: ['Intel Core i7 13th Gen', '16GB DDR5 RAM / 512GB SSD', 'HP Sure Start Self-Healing BIOS', '14" WUXGA Anti-Glare Screen']
     },
@@ -104,6 +108,7 @@ export default function Products() {
       category: 'workstations',
       brand: 'HP',
       icon: <Cpu size={32} className="prod-icon" />,
+      image: '/dell-optiplex.png',
       desc: 'Extreme-grade tower workstation designed to run 3D modeling, heavy engineering rendering, and local dataset analytics.',
       specs: ['Intel Xeon W-1300 Processor', '32GB ECC DDR5 RAM', 'NVIDIA RTX A2000 12GB GPU', '700W 90% Efficient PSU']
     },
@@ -113,6 +118,7 @@ export default function Products() {
       category: 'mobile_workstations',
       brand: 'Dell',
       icon: <Laptop size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
       desc: 'Ultra-thin, light laptop workstation combining visual color accuracy and extreme processing capacity for designers on-the-go.',
       specs: ['Intel Core i9 12th Gen (14-Core)', '32GB DDR5 RAM / 1TB SSD', 'NVIDIA RTX A1000 Professional GPU', '15.6" UHD+ HDR Touch Display']
     },
@@ -122,6 +128,7 @@ export default function Products() {
       category: 'tablets',
       brand: 'Samsung',
       icon: <Tablet size={32} className="prod-icon" />,
+      image: '/hp-elitebook.png',
       desc: 'Military-grade rugged tablet engineered for field service engineers, healthcare workers, and tough outdoor environments.',
       specs: ['10.1" WUXGA Gorilla Glass 5', 'MIL-STD-810H & IP68 Rated', 'Support for glove touch & S-Pen', 'Replaceable 7600 mAh battery']
     },
@@ -131,6 +138,7 @@ export default function Products() {
       category: 'printers',
       brand: 'HP',
       icon: <Printer size={32} className="prod-icon" />,
+      image: '/epson-ecotank.png',
       desc: 'Wireless, multi-function black-and-white laser printer configured for fast double-sided printing, scanning, and copying.',
       specs: ['Up to 40 ppm Print Speeds', 'Automatic 2-Sided Printing', '50-sheet Auto Document Feeder', 'HP Wolf Pro Security Built-in']
     },
@@ -140,6 +148,7 @@ export default function Products() {
       category: 'printers',
       brand: 'Epson',
       icon: <Printer size={32} className="prod-icon" />,
+      image: '/epson-ecotank.png',
       desc: 'Ink Tank multi-function color printer delivering high print yields, low operating costs, and integrated Wi-Fi Direct connection.',
       specs: ['Ultra-low cost printing system', 'Up to 4500 Black / 7500 Color pages', 'Wi-Fi & App Direct Printing', '10 x 15 cm borderless photo support']
     },
@@ -149,10 +158,12 @@ export default function Products() {
       category: 'firewalls',
       brand: 'Fortinet',
       icon: <Network size={32} className="prod-icon" />,
+      image: '/sophos-xgs.png',
       desc: 'Compact, all-in-one network security appliance optimized for distributed enterprise offices and secure SD-WAN setups.',
       specs: ['10 Gbps Firewall Throughput', '700 Mbps Threat Protection', 'Integrated secure SD-WAN controller', 'Fanless design for silent desktop use']
     }
   ];
+
 
   // Filtering products based on category and search query
   const filteredProducts = productsData.filter((prod) => {
@@ -193,13 +204,13 @@ export default function Products() {
   return (
     <section id="products" className="section products-section">
       <div className="container">
-        <h2 className="section-title reveal active">Enterprise <span className="gradient-text">IT Products</span></h2>
-        <p className="section-subtitle reveal active">
+        <h2 className="section-title reveal-slide-up">Enterprise <span className="gradient-text">IT Products</span></h2>
+        <p className="section-subtitle reveal-fade delay-100">
           Select from our range of tier-1 server hardware, firewalls, network switches, and security cameras.
         </p>
 
         {/* Search & Category Filter Controls */}
-        <div className="products-controls reveal active">
+        <div className="products-controls reveal-fade delay-200">
           <div className="search-wrapper glass-panel">
             <Search className="search-icon" size={20} />
             <input 
@@ -227,10 +238,10 @@ export default function Products() {
         {/* Products Grid or Category Divisions */}
         {selectedCategory === 'all' && searchQuery === '' ? (
           <div className="category-divisions-container">
-            {categoryDivisions.map((div) => (
+            {categoryDivisions.map((div, index) => (
               <div 
                 key={div.id} 
-                className="category-division reveal active" 
+                className={`category-division reveal-slide-up delay-${(index + 1) * 100}`} 
                 onClick={() => handleDivisionClick(div.id)}
                 style={{ cursor: 'pointer' }}
               >
@@ -257,7 +268,7 @@ export default function Products() {
                 if (!activeDiv) return null;
                 return (
                   <div 
-                    className="category-division filtered-banner reveal active" 
+                    className="category-division filtered-banner reveal-scale-up" 
                     onClick={() => handleDivisionClick(activeDiv.id)}
                     style={{ cursor: 'pointer', marginBottom: '50px' }}
                   >
@@ -285,14 +296,19 @@ export default function Products() {
                     >
                       ← Back to Overview
                     </button>
-                    <h3 className="category-grid-title reveal active">
+                    <h3 className="category-grid-title reveal-fade">
                       Available {categories.find(c => c.id === selectedCategory)?.label}
                     </h3>
                   </div>
                 )}
                 <div className="grid-3 products-grid">
-                  {filteredProducts.map((prod) => (
-                    <div key={prod.id} className="product-card glass-panel reveal active">
+                  {filteredProducts.map((prod, index) => (
+                    <div 
+                      key={prod.id} 
+                      className={`product-card glass-panel reveal-scale-up delay-${(index + 1) * 100}`}
+                      onClick={() => setActiveProductModal(prod)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <div className="prod-badge-brand">{prod.brand}</div>
                       <div className="prod-icon-box">{prod.icon}</div>
                       <h3 className="product-card-title">{prod.name}</h3>
@@ -309,7 +325,10 @@ export default function Products() {
 
                       <button 
                         className="btn btn-primary product-quote-btn"
-                        onClick={() => handleQuoteClick(prod.name)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleQuoteClick(prod.name);
+                        }}
                       >
                         Request Quotation
                       </button>
@@ -318,7 +337,7 @@ export default function Products() {
                 </div>
               </div>
             ) : (
-              <div className="no-products glass-panel reveal active">
+              <div className="no-products glass-panel reveal-fade">
                 <ShieldAlert size={48} className="no-prod-icon" />
                 <h3>No products found</h3>
                 <p>We couldn't find any products matching "{searchQuery}". Try adjusting your filters or search terms.</p>
@@ -327,6 +346,57 @@ export default function Products() {
           </div>
         )}
       </div>
+
+      {/* Product Details Modal */}
+      {activeProductModal && (
+        <div className="product-modal-overlay" onClick={() => setActiveProductModal(null)}>
+          <div className="product-modal glass-panel" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setActiveProductModal(null)} aria-label="Close modal">
+              <X size={24} />
+            </button>
+            
+            <div className="product-modal-content-layout">
+              {/* Left Column: Image */}
+              <div className="product-modal-image-side">
+                <img 
+                  src={activeProductModal.image} 
+                  alt={activeProductModal.name} 
+                  className="product-modal-image" 
+                />
+              </div>
+              
+              {/* Right Column: Specs */}
+              <div className="product-modal-info-side">
+                <span className="product-modal-brand-tag">{activeProductModal.brand}</span>
+                <h2 className="product-modal-title">{activeProductModal.name}</h2>
+                <p className="product-modal-desc">{activeProductModal.desc}</p>
+                
+                <div className="product-modal-specs-section">
+                  <h3>Detailed Specifications</h3>
+                  <ul className="product-modal-specs-list">
+                    {activeProductModal.specs.map((spec, idx) => (
+                      <li key={idx}>
+                        <span className="spec-bullet">•</span>
+                        <span>{spec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <button 
+                  className="btn btn-primary product-modal-quote-btn"
+                  onClick={() => {
+                    setActiveProductModal(null);
+                    handleQuoteClick(activeProductModal.name);
+                  }}
+                >
+                  Request Pricing & Availability
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

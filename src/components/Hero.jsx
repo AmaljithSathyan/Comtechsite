@@ -1,8 +1,20 @@
-import React from 'react';
-import { ArrowRight, Server, Shield, Cloud, Network } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Server, Shield, Cloud, Network, Cpu } from 'lucide-react';
 import './Hero.css';
 
 export default function Hero({ setActiveSection }) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      setMousePos({ x, y });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const handleNavClick = (sectionId) => {
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
@@ -24,7 +36,7 @@ export default function Hero({ setActiveSection }) {
     <section id="home" className="hero-section">
       <div className="tech-bg tech-bg-animated"></div>
       <div className="background-lines-wrapper">
-        <svg className="background-lines" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg className="background-lines" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)` }}>
           <defs>
             <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="rgba(14, 165, 233, 0)" />
@@ -47,8 +59,8 @@ export default function Hero({ setActiveSection }) {
           <path d="M-10,70 Q20,90 110,40" className="bg-line bg-line-3" />
         </svg>
       </div>
-      <div className="hero-glow-1"></div>
-      <div className="hero-glow-2"></div>
+      <div className="hero-glow-1" style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}></div>
+      <div className="hero-glow-2" style={{ transform: `translate(${mousePos.x * 40}px, ${mousePos.y * 40}px)` }}></div>
       
       <div className="container hero-container">
         <div className="hero-content">
@@ -73,6 +85,44 @@ export default function Hero({ setActiveSection }) {
             <button onClick={() => handleNavClick('contact')} className="btn btn-secondary">
               Request a Consultation
             </button>
+          </div>
+        </div>
+
+        <div className="hero-visual animate-fade-in-delayed">
+          <div className="visual-wrapper glass-panel">
+            <div className="visual-header">
+              <span className="dot red"></span>
+              <span className="dot yellow"></span>
+              <span className="dot green"></span>
+              <span className="visual-title">COMTECH NETWORK STATUS</span>
+            </div>
+            <div className="visual-body">
+              <svg className="network-svg" width="100%" height="100%">
+                <line x1="50%" y1="50%" x2="25%" y2="28%" className="net-line line-green" />
+                <line x1="50%" y1="50%" x2="77%" y2="33%" className="net-line line-yellow" />
+                <line x1="50%" y1="50%" x2="40%" y2="74%" className="net-line line-blue" />
+              </svg>
+              
+              <div className="network-node central-node">
+                <Cpu size={28} className="node-icon animate-pulse" />
+                <span className="node-label">COMTECH</span>
+              </div>
+              
+              <div className="network-node node-1">
+                <Server size={18} className="node-icon" />
+                <span className="node-label">Servers</span>
+              </div>
+
+              <div className="network-node node-2">
+                <Shield size={18} className="node-icon" />
+                <span className="node-label">Security</span>
+              </div>
+
+              <div className="network-node node-3">
+                <Cloud size={18} className="node-icon" />
+                <span className="node-label">Cloud</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -104,3 +154,4 @@ export default function Hero({ setActiveSection }) {
     </section>
   );
 }
+

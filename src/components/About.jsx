@@ -57,14 +57,14 @@ export default function About() {
   return (
     <section id="about" className="section about-section">
       <div className="container">
-        <h2 className="section-title reveal active">Our Story & <span className="gradient-text">Values</span></h2>
-        <p className="section-subtitle reveal active">
+        <h2 className="section-title reveal-slide-up">Our Story & <span className="gradient-text">Values</span></h2>
+        <p className="section-subtitle reveal-fade delay-100">
           Empowering enterprises with cutting-edge IT infrastructure and services since 2002.
         </p>
 
         {/* Brand Overview */}
         <div className="grid-2 brand-overview">
-          <div className="overview-text reveal active">
+          <div className="overview-text reveal-slide-left delay-200">
             <h3>Who We Are</h3>
             <p>
               Comtech Systems is a pioneering IT services company established in 2002, recognized for our unwavering commitment to delivering top-tier solutions. With a proven track record of implementing cutting-edge technologies and fostering innovation, we are dedicated to propelling businesses forward in the ever-evolving landscape of technology and infrastructure.
@@ -72,7 +72,7 @@ export default function About() {
           </div>
           <div className="overview-values">
             {coreValues.map((val, index) => (
-              <div key={index} className="value-card glass-panel reveal active">
+              <div key={index} className={`value-card glass-panel reveal-scale-up delay-${(index + 1) * 100}`}>
                 <div className="value-icon-wrapper">{val.icon}</div>
                 <div className="value-info">
                   <h4>{val.title}</h4>
@@ -84,12 +84,12 @@ export default function About() {
         </div>
 
         {/* Growth Timeline */}
-        <div className="timeline-section-wrapper reveal active">
-          <h3 className="timeline-title">Our Growth Journey</h3>
+        <div className="timeline-section-wrapper">
+          <h3 className="timeline-title reveal-slide-up">Our Growth Journey</h3>
 
           <div className="timeline-layout-grid">
             {/* Left Column: Engineer Photo */}
-            <div className="timeline-photo-box glass-panel">
+            <div className="timeline-photo-box glass-panel reveal-slide-left delay-200">
               <img src="/service-engineer.png" alt="Comtech IT Service Engineer" className="engineer-photo" />
               <div className="photo-overlay-tag">Certified Support Team</div>
             </div>
@@ -98,7 +98,7 @@ export default function About() {
             <div className="timeline-container-right">
               <div className="timeline-line-right"></div>
               {timelineEvents.map((event, index) => (
-                <div key={index} className="timeline-item-right">
+                <div key={index} className={`timeline-item-right reveal-slide-right delay-${(index + 1) * 100}`}>
                   <div className="timeline-badge-right">{event.year}</div>
                   <div className="timeline-panel-right glass-panel">
                     <h4>{event.title}</h4>
@@ -111,13 +111,13 @@ export default function About() {
         </div>
 
         {/* Office Locations */}
-        <div className="locations-container reveal active">
-          <h3 className="locations-title">Our Presence</h3>
-          <p className="locations-subtitle">Reach out to our teams across our strategic regional branch offices.</p>
+        <div className="locations-container">
+          <h3 className="locations-title reveal-slide-up">Our Presence</h3>
+          <p className="locations-subtitle reveal-fade delay-100">Reach out to our teams across our strategic regional branch offices.</p>
 
           <div className="grid-3">
             {locations.map((loc, index) => (
-              <div key={index} className="location-card glass-panel">
+              <div key={index} className={`location-card glass-panel reveal-scale-up delay-${(index + 1) * 100}`}>
                 <div className="loc-card-header">
                   <MapPin size={24} className="pin-icon" />
                   <div>

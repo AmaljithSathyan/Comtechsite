@@ -66,14 +66,14 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
-        <h2 className="section-title reveal active">Connect <span className="gradient-text">With Us</span></h2>
-        <p className="section-subtitle reveal active">
+        <h2 className="section-title reveal-slide-up">Connect <span className="gradient-text">With Us</span></h2>
+        <p className="section-subtitle reveal-fade delay-100">
           Discuss your server deployment, network cabling, or firewall project with our IT consultants today.
         </p>
 
         <div className="grid-2 contact-layout">
           {/* Info Side */}
-          <div className="contact-info-side reveal active">
+          <div className="contact-info-side reveal-slide-left delay-200">
             <h3>Contact Information</h3>
             <p className="info-desc">
               Have questions or need immediate IT support? Call our hotline or send us an email. Our technical teams are ready to configure your infrastructure.
@@ -108,7 +108,7 @@ export default function Contact() {
           </div>
 
           {/* Form Side */}
-          <div className="contact-form-side glass-panel reveal active">
+          <div className="contact-form-side glass-panel reveal-slide-right delay-200">
             <h3>Request a Free Quotation</h3>
             
             {submitSuccess && (
@@ -210,13 +210,13 @@ export default function Contact() {
         </div>
 
         {/* FAQs Section */}
-        <div className="faqs-section reveal active">
-          <h3 className="faqs-title">Frequently Asked Questions</h3>
+        <div className="faqs-section">
+          <h3 className="faqs-title reveal-slide-up">Frequently Asked Questions</h3>
           <div className="faqs-list">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className={`faq-item glass-panel ${activeFaq === index ? 'open' : ''}`}
+                className={`faq-item glass-panel reveal-fade delay-${(index + 1) * 100} ${activeFaq === index ? 'open' : ''}`}
                 onClick={() => toggleFaq(index)}
               >
                 <div className="faq-question">

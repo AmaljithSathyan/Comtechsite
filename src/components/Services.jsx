@@ -86,14 +86,14 @@ export default function Services() {
   return (
     <section id="services" className="section services-section">
       <div className="container">
-        <h2 className="section-title reveal active">Enterprise <span className="gradient-text">IT Services</span></h2>
-        <p className="section-subtitle reveal active">
+        <h2 className="section-title reveal-slide-up">Enterprise <span className="gradient-text">IT Services</span></h2>
+        <p className="section-subtitle reveal-fade delay-100">
           Tailored tech solutions designed to guarantee network uptime, absolute cybersecurity, and smooth system administration.
         </p>
 
         <div className="grid-3 services-grid">
-          {servicesData.map((svc) => (
-            <div key={svc.id} className="service-card glass-panel reveal active">
+          {servicesData.map((svc, index) => (
+            <div key={svc.id} className={`service-card glass-panel reveal-scale-up delay-${(index + 1) * 100}`}>
               <div className="service-icon-box">{svc.icon}</div>
               <h3 className="service-card-title">{svc.title}</h3>
               <p className="service-card-desc">{svc.shortDesc}</p>

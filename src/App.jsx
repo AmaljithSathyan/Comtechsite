@@ -44,17 +44,14 @@ export default function App() {
       }
 
       // Scroll Reveal Animation trigger
-      const reveals = document.querySelectorAll('.reveal');
+      const reveals = document.querySelectorAll('.reveal, [class*="reveal-"]');
       reveals.forEach((reveal) => {
         const windowHeight = window.innerHeight;
         const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 100; // triggers 100px before coming into view
+        const revealPoint = 80; // triggers 80px before coming into view
 
         if (revealTop < windowHeight - revealPoint) {
           reveal.classList.add('active');
-        } else {
-          // Keep active to prevent reset on scroll up, or remove it for repeat animations
-          // reveal.classList.remove('active');
         }
       });
     };

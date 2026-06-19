@@ -117,15 +117,61 @@ button, input, textarea, select {
 }
 
 /* Scroll Animation Utility Classes */
-.reveal {
+.reveal,
+.reveal-fade,
+.reveal-slide-up,
+.reveal-slide-left,
+.reveal-slide-right,
+.reveal-scale-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.active {
+.reveal,
+.reveal-slide-up {
+  transform: translateY(40px);
+}
+
+.reveal-fade {
+  transform: none;
+}
+
+.reveal-slide-left {
+  transform: translateX(-40px);
+}
+
+.reveal-slide-right {
+  transform: translateX(40px);
+}
+
+.reveal-scale-up {
+  transform: scale(0.92);
+}
+
+/* Active states */
+.reveal.active,
+.reveal-fade.active,
+.reveal-slide-up.active,
+.reveal-slide-left.active,
+.reveal-slide-right.active,
+.reveal-scale-up.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+/* Animation Delays for Staggered Effects */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-700 { transition-delay: 0.7s; }
+
+/* Reset transition delay after reveal animation is active to ensure responsive hover/click states */
+.reveal.active,
+[class*="reveal-"].active {
+  transition-delay: 0s !important;
 }
 
 /* Layout Utilities */
