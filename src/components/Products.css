@@ -1,5 +1,6 @@
 .products-section {
-  background-color: var(--bg-primary);
+  background-color: #ffffff;
+  color: #0f172a;
   position: relative;
 }
 
@@ -91,9 +92,7 @@
   background-repeat: no-repeat;
 }
 
-[data-theme="light"] .product-card:hover {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)), url('/cloud-bg.png');
-}
+
 
 .prod-badge-brand {
   position: absolute;
@@ -616,6 +615,109 @@
   .product-modal-title {
     font-size: 1.4rem;
   }
+}
+
+/* Light Theme Contrast Overrides for Products Section */
+.products-section .section-title,
+.products-section .category-grid-title,
+.products-section .product-card-title,
+.products-section .category-division-title {
+  color: #0f172a !important;
+}
+
+.products-section .section-subtitle,
+.products-section .category-division-desc,
+.products-section .btn-back,
+.products-section .no-products p {
+  color: #334155 !important;
+}
+
+/* Light theme cards styling */
+.products-section .product-card,
+.products-section .category-division,
+.products-section .no-products {
+  background: rgba(248, 250, 252, 0.7) !important;
+  border: 1px solid rgba(14, 165, 233, 0.15) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Override dark category division background */
+.products-section .category-division {
+  background-color: rgba(248, 250, 252, 0.7) !important;
+}
+
+/* Card hover styles */
+.products-section .product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+.products-section .category-division:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.12);
+  background-color: #ffffff !important;
+}
+
+/* Image wrapper adjustment for white background */
+.products-section .prod-card-image-wrapper {
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+}
+
+.products-section .product-card:hover .prod-card-image-wrapper {
+  border-color: var(--accent-primary) !important;
+}
+
+/* Search bar light style */
+.products-section .search-wrapper {
+  background: rgba(248, 250, 252, 0.8) !important;
+  border: 1px solid rgba(14, 165, 233, 0.15) !important;
+}
+
+.products-section .search-input {
+  color: #0f172a !important;
+}
+
+.products-section .search-input::placeholder {
+  color: #64748b !important;
+}
+
+.products-section .search-icon {
+  color: #64748b !important;
+}
+
+/* Back button light style */
+.products-section .btn-back {
+  border-color: rgba(14, 165, 233, 0.15) !important;
+}
+
+.products-section .btn-back:hover {
+  background-color: rgba(14, 165, 233, 0.05);
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Filter buttons styling */
+.products-section .filter-btn {
+  border-color: rgba(14, 165, 233, 0.15);
+  color: #334155;
+}
+
+.products-section .filter-btn:hover {
+  background-color: rgba(14, 165, 233, 0.05);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.products-section .filter-btn.active {
+  background: var(--accent-gradient);
+  color: #ffffff !important;
+  border-color: transparent;
 }
 
 

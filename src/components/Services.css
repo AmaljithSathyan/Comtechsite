@@ -27,9 +27,7 @@
   background-repeat: no-repeat;
 }
 
-[data-theme="light"] .service-card:hover {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)), url('/cloud-bg.png');
-}
+
 
 .service-icon-box {
   width: 70px;

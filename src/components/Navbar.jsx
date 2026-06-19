@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Cpu } from 'lucide-react';
+import { Menu, X, Cpu } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
+export default function Navbar({ activeSection, setActiveSection }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -59,16 +59,10 @@ export default function Navbar({ theme, toggleTheme, activeSection, setActiveSec
               {item.label}
             </button>
           ))}
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
         </div>
 
         {/* Mobile Action buttons */}
         <div className="mobile-actions">
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
           <button 
             className="mobile-menu-btn" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

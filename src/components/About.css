@@ -1,5 +1,6 @@
 .about-section {
-  background-color: var(--bg-primary);
+  background-color: #ffffff;
+  color: #0f172a;
   position: relative;
 }
 
@@ -188,9 +189,7 @@
   background-repeat: no-repeat;
 }
 
-[data-theme="light"] .timeline-panel-right:hover {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)), url('/cloud-bg.png');
-}
+
 
 .timeline-panel-right h4 {
   font-size: 1.15rem;
@@ -237,9 +236,7 @@
   background-repeat: no-repeat;
 }
 
-[data-theme="light"] .location-card:hover {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)), url('/cloud-bg.png');
-}
+
 
 .loc-card-header {
   display: flex;
@@ -330,4 +327,64 @@
   .timeline-item-right {
     padding-left: 15px;
   }
+}
+
+/* Light Theme Contrast Overrides for About Us Section */
+.about-section .section-title,
+.about-section .overview-text h3,
+.about-section .timeline-title,
+.about-section .locations-title,
+.about-section .loc-card-header h4,
+.about-section .value-info h4 {
+  color: #0f172a !important;
+}
+
+.about-section .section-subtitle,
+.about-section .overview-text p,
+.about-section .value-info p,
+.about-section .timeline-panel-right p,
+.about-section .locations-subtitle,
+.about-section .loc-address,
+.about-section .loc-detail {
+  color: #334155 !important;
+}
+
+.about-section .value-card,
+.about-section .timeline-panel-right,
+.about-section .location-card {
+  background: rgba(248, 250, 252, 0.7) !important;
+  border: 1px solid rgba(14, 165, 233, 0.12) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.about-section .value-card:hover {
+  transform: translateX(10px);
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+  background: #ffffff !important;
+}
+
+.about-section .timeline-panel-right:hover {
+  transform: translateX(8px);
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.about-section .location-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.about-section .timeline-line-right {
+  background-color: rgba(14, 165, 233, 0.2);
+}
+
+.about-section .loc-contact-details {
+  border-top: 1px solid rgba(14, 165, 233, 0.15);
 }

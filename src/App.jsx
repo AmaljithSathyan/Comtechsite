@@ -8,22 +8,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [theme, setTheme] = useState('dark');
   const [activeSection, setActiveSection] = useState('home');
 
-  // Load theme preference from localStorage or default to dark
+  // Force dark theme on load
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
 
   // Scroll Spy and Reveal Animation Effect
   useEffect(() => {
@@ -66,8 +56,6 @@ export default function App() {
   return (
     <>
       <Navbar 
-        theme={theme} 
-        toggleTheme={toggleTheme} 
         activeSection={activeSection} 
         setActiveSection={setActiveSection} 
       />
