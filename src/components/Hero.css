@@ -129,6 +129,9 @@
     grid-template-columns: 1.1fr 0.9fr;
     max-width: var(--max-width);
   }
+  .hero-title {
+    white-space: nowrap;
+  }
 }
 
 .hero-content {
@@ -173,7 +176,7 @@
 }
 
 .hero-title {
-  font-size: 1.8rem;
+  font-size: 1.45rem;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.5px;
