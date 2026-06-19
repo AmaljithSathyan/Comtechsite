@@ -3,6 +3,7 @@ import { Award, ShieldCheck, HeartHandshake, MapPin, Phone, Mail, Clock } from '
 import './About.css';
 
 export default function About() {
+
   const coreValues = [
     {
       icon: <Award size={32} className="val-icon" />,
@@ -85,14 +86,14 @@ export default function About() {
         {/* Growth Timeline */}
         <div className="timeline-section-wrapper reveal active">
           <h3 className="timeline-title">Our Growth Journey</h3>
-          
+
           <div className="timeline-layout-grid">
             {/* Left Column: Engineer Photo */}
             <div className="timeline-photo-box glass-panel">
               <img src="/service-engineer.png" alt="Comtech IT Service Engineer" className="engineer-photo" />
               <div className="photo-overlay-tag">Certified Support Team</div>
             </div>
-            
+
             {/* Right Column: Single-Sided Timeline */}
             <div className="timeline-container-right">
               <div className="timeline-line-right"></div>
@@ -113,7 +114,7 @@ export default function About() {
         <div className="locations-container reveal active">
           <h3 className="locations-title">Our Presence</h3>
           <p className="locations-subtitle">Reach out to our teams across our strategic regional branch offices.</p>
-          
+
           <div className="grid-3">
             {locations.map((loc, index) => (
               <div key={index} className="location-card glass-panel">
