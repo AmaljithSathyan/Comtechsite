@@ -14,9 +14,30 @@
 
 .navbar.scrolled {
   height: 70px;
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.navbar.scrolled .nav-link {
+  color: #475569;
+}
+
+.navbar.scrolled .nav-link:hover {
+  color: #0f172a;
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+.navbar.scrolled .nav-link.active {
+  color: #0284c7;
+  background-color: rgba(14, 165, 233, 0.12);
+  font-weight: 600;
+}
+
+.navbar.scrolled .mobile-menu-btn {
+  color: #0f172a;
 }
 
 .navbar-container {
