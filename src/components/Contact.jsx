@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, HelpCircle, ChevronDown, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
 export default function Contact() {
@@ -13,26 +13,6 @@ export default function Contact() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [activeFaq, setActiveFaq] = useState(null);
-
-  const faqs = [
-    {
-      q: 'Which geographic regions do you serve?',
-      a: 'We serve clients across Kerala (with offices in Ernakulam/Kochi and Alappuzha) and Tamil Nadu (with our branch in Chennai). We also execute out-station projects for enterprise-wide deployments.'
-    },
-    {
-      q: 'Do you offer custom SLA options for AMCs?',
-      a: 'Yes, our Annual Maintenance Contracts (AMC) are highly customizable. We offer 8x5 next-business-day response plans for standard hardware and 24x7 critical-incident coverage for core firewalls, active switches, and data server architectures.'
-    },
-    {
-      q: 'Can you assist in network security audits and Sophos configuration?',
-      a: 'Absolutely. We are certified security engineers. We perform vulnerability assessment and penetration testing (VAPT), set up isolated VLAN structures, route secure remote worker VPN tunnels, and license/deploy Sophos UTM firewalls.'
-    },
-    {
-      q: 'What hardware brands do you supply and support?',
-      a: 'We supply high-performance hardware from leading tier-1 brands including Dell EMC, Hewlett Packard Enterprise (HPE), Sophos, Fortinet, Cisco, Ubiquiti, Synology, Hikvision, and Matrix.'
-    }
-  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -59,9 +39,7 @@ export default function Contact() {
     }, 1500);
   };
 
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
+
 
   return (
     <section id="contact" className="section contact-section">
@@ -209,28 +187,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* FAQs Section */}
-        <div className="faqs-section">
-          <h3 className="faqs-title reveal-slide-up">Frequently Asked Questions</h3>
-          <div className="faqs-list">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className={`faq-item glass-panel reveal-fade delay-${(index + 1) * 100} ${activeFaq === index ? 'open' : ''}`}
-                onClick={() => toggleFaq(index)}
-              >
-                <div className="faq-question">
-                  <HelpCircle size={20} className="faq-icon" />
-                  <h4>{faq.q}</h4>
-                  <ChevronDown size={20} className="faq-arrow" />
-                </div>
-                <div className="faq-answer">
-                  <p>{faq.a}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </div>
     </section>
   );
