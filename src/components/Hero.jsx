@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Server, Shield, Cloud, Network, Cpu } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import servicesVideo from '../assets/14999678_1920_1080_25fps.mp4';
 import './Hero.css';
 
 export default function Hero({ setActiveSection }) {
@@ -34,7 +35,29 @@ export default function Hero({ setActiveSection }) {
 
   return (
     <section id="home" className="hero-section">
+      {/* Background Video */}
+      <video className="hero-bg-video" autoPlay loop muted playsInline>
+        <source src={servicesVideo} type="video/mp4" />
+      </video>
+
       <div className="tech-bg tech-bg-animated"></div>
+      
+      {/* Advanced Animated Squares at Left Corner */}
+      <div className="animated-squares-left">
+        <div className="square square-1"></div>
+        <div className="square square-2"></div>
+        <div className="square square-3"></div>
+        <div className="square square-4"></div>
+      </div>
+
+      {/* Advanced Animated Squares at Center */}
+      <div className="animated-squares-center">
+        <div className="square square-1"></div>
+        <div className="square square-2"></div>
+        <div className="square square-3"></div>
+        <div className="square square-4"></div>
+      </div>
+
       <div className="background-lines-wrapper">
         <svg className="background-lines" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)` }}>
           <defs>
@@ -88,43 +111,7 @@ export default function Hero({ setActiveSection }) {
           </div>
         </div>
 
-        <div className="hero-visual animate-fade-in-delayed">
-          <div className="visual-wrapper glass-panel">
-            <div className="visual-header">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-              <span className="visual-title">COMTECH NETWORK STATUS</span>
-            </div>
-            <div className="visual-body">
-              <svg className="network-svg" width="100%" height="100%">
-                <line x1="50%" y1="50%" x2="25%" y2="28%" className="net-line line-green" />
-                <line x1="50%" y1="50%" x2="77%" y2="33%" className="net-line line-yellow" />
-                <line x1="50%" y1="50%" x2="40%" y2="74%" className="net-line line-blue" />
-              </svg>
-              
-              <div className="network-node central-node">
-                <Cpu size={28} className="node-icon animate-pulse" />
-                <span className="node-label">COMTECH</span>
-              </div>
-              
-              <div className="network-node node-1">
-                <Server size={18} className="node-icon" />
-                <span className="node-label">Servers</span>
-              </div>
-
-              <div className="network-node node-2">
-                <Shield size={18} className="node-icon" />
-                <span className="node-label">Security</span>
-              </div>
-
-              <div className="network-node node-3">
-                <Cloud size={18} className="node-icon" />
-                <span className="node-label">Cloud</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="hero-visual animate-fade-in-delayed"></div>
       </div>
 
       {/* Metrics Banner */}
