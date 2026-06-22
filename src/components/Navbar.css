@@ -35,22 +35,15 @@
   gap: 10px;
 }
 
-.logo-icon {
-  color: var(--accent-primary);
-  width: 28px;
-  height: 28px;
+.logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
 }
 
-.logo-text {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-}
-
-.logo-sub {
-  color: var(--accent-primary);
-  font-weight: 500;
+.logo:hover .logo-img {
+  transform: scale(1.03);
 }
 
 .desktop-menu {

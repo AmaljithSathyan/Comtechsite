@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ShieldAlert, Laptop, Network, HardDrive, Printer, Tablet, Monitor, Cpu, X } from 'lucide-react';
 import './Products.css';
 
@@ -251,6 +251,16 @@ export default function Products() {
     }
   };
 
+  // Dispatch scroll event to trigger scroll reveal animations for overview divisions
+  useEffect(() => {
+    const triggerScroll = () => {
+      window.dispatchEvent(new Event('scroll'));
+    };
+    triggerScroll();
+    const timer = setTimeout(triggerScroll, 50);
+    return () => clearTimeout(timer);
+  }, [selectedCategory, searchQuery, showCategoryGrid]);
+
   return (
     <section id="products" className="section products-section">
       <div className="container">
@@ -318,7 +328,7 @@ export default function Products() {
                 if (!activeDiv) return null;
                 return (
                   <div 
-                    className="category-division filtered-banner reveal-scale-up" 
+                    className="category-division filtered-banner" 
                     onClick={() => handleDivisionClick(activeDiv.id)}
                     style={{ cursor: 'pointer', marginBottom: '50px' }}
                   >
@@ -346,7 +356,7 @@ export default function Products() {
                     >
                       ← Back to Overview
                     </button>
-                    <h3 className="category-grid-title reveal-fade">
+                    <h3 className="category-grid-title">
                       Available {categories.find(c => c.id === selectedCategory)?.label}
                     </h3>
                   </div>
@@ -355,7 +365,7 @@ export default function Products() {
                   {filteredProducts.map((prod, index) => (
                     <div 
                       key={prod.id} 
-                      className={`product-card glass-panel reveal-scale-up delay-${(index + 1) * 100}`}
+                      className="product-card glass-panel"
                       onClick={() => setActiveProductModal(prod)}
                       style={{ cursor: 'pointer' }}
                     >
@@ -379,7 +389,7 @@ export default function Products() {
                 </div>
               </div>
             ) : (
-              <div className="no-products glass-panel reveal-fade">
+              <div className="no-products glass-panel">
                 <ShieldAlert size={48} className="no-prod-icon" />
                 <h3>No products found</h3>
                 <p>We couldn't find any products matching "{searchQuery}". Try adjusting your filters or search terms.</p>

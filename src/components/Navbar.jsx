@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import businessLogo from '../assets/BusinessLogo.webp';
 import './Navbar.css';
 
 export default function Navbar({ activeSection, setActiveSection }) {
@@ -44,8 +45,7 @@ export default function Navbar({ activeSection, setActiveSection }) {
     <nav className={`navbar ${isScrolled ? 'scrolled glass-panel' : ''}`}>
       <div className="navbar-container">
         <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>
-          <Cpu className="logo-icon animate-float" />
-          <span className="logo-text">COMTECH <span className="logo-sub">SYSTEMS</span></span>
+          <img src={businessLogo} alt="Comtech Systems" className="logo-img" />
         </a>
 
         {/* Desktop Menu */}
