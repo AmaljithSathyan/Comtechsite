@@ -1,5 +1,6 @@
 import React from 'react';
-import { Cpu, Phone, Mail, MapPin, Linkedin, Facebook, Twitter, ShieldAlert } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Twitter, ShieldAlert } from 'lucide-react';
+import businessLogo from '../assets/BusinessLogo.webp';
 import './Footer.css';
 
 export default function Footer({ setActiveSection }) {
@@ -25,14 +26,13 @@ export default function Footer({ setActiveSection }) {
       <div className="container footer-content">
         <div className="footer-brand">
           <div className="brand-logo">
-            <Cpu className="logo-icon animate-float" />
-            <span className="brand-name">COMTECH <span className="logo-sub">SYSTEMS</span></span>
+            <img src={businessLogo} alt="Comtech Systems Logo" className="footer-logo-img" />
           </div>
           <p className="brand-tagline">
             Providing high-performance Enterprise IT infrastructure, Cybersecurity, and Structured Cabling solutions since 2002.
           </p>
           <div className="social-links">
-            <a href="#" className="social-link" aria-label="LinkedIn"><Linkedin size={18} /></a>
+            <a href="https://www.linkedin.com/company/comtech-systems-kochi/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn"><Linkedin size={18} /></a>
             <a href="#" className="social-link" aria-label="Facebook"><Facebook size={18} /></a>
             <a href="#" className="social-link" aria-label="Twitter"><Twitter size={18} /></a>
           </div>
