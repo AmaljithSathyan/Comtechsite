@@ -116,7 +116,7 @@ export default function Hero({ setActiveSection }) {
 
       {/* Metrics Banner */}
       <div className="container hero-metrics-container">
-        <div className="hero-metrics glass-panel">
+        <div className="hero-metrics">
           <div className="metric-item">
             <h3 className="metric-value">24+</h3>
             <p className="metric-label">Years of IT Excellence</p>
