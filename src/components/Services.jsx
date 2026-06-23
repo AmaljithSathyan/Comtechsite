@@ -85,6 +85,11 @@ export default function Services() {
 
   return (
     <section id="services" className="section services-section">
+      <div className="aurora-bg">
+        <div className="aurora-blob aurora-blob-1"></div>
+        <div className="aurora-blob aurora-blob-2"></div>
+        <div className="aurora-blob aurora-blob-3"></div>
+      </div>
       <div className="container">
         <h2 className="section-title reveal-slide-up">Enterprise <span className="gradient-text">IT Services</span></h2>
         <p className="section-subtitle reveal-fade delay-100">

@@ -23,6 +23,27 @@ export default function Footer({ setActiveSection }) {
 
   return (
     <footer className="footer">
+      <div className="aurora-bg">
+        <div className="aurora-blob aurora-blob-1"></div>
+        <div className="aurora-blob aurora-blob-2"></div>
+        <div className="aurora-blob aurora-blob-3"></div>
+      </div>
+      {/* Advanced Animated Squares at Left Corner */}
+      <div className="animated-squares-left">
+        <div className="square square-1"></div>
+        <div className="square square-2"></div>
+        <div className="square square-3"></div>
+        <div className="square square-4"></div>
+      </div>
+
+      {/* Advanced Animated Squares at Right Corner */}
+      <div className="animated-squares-right">
+        <div className="square square-1"></div>
+        <div className="square square-2"></div>
+        <div className="square square-3"></div>
+        <div className="square square-4"></div>
+      </div>
+
       <div className="container footer-content">
         <div className="footer-brand">
           <div className="brand-logo">

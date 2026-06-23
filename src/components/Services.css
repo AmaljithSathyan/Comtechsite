@@ -1,7 +1,14 @@
 .services-section {
   background-color: var(--bg-secondary);
   position: relative;
+  overflow: hidden;
 }
+
+.services-section .container {
+  position: relative;
+  z-index: 2;
+}
+
 
 .services-grid {
   justify-content: center;

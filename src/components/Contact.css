@@ -1,6 +1,12 @@
 .contact-section {
   background-color: var(--bg-secondary);
   position: relative;
+  overflow: hidden;
+}
+
+.contact-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-layout {
