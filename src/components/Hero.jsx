@@ -40,6 +40,13 @@ export default function Hero({ setActiveSection }) {
         <source src={servicesVideo} type="video/mp4" />
       </video>
 
+      {/* Aurora Background */}
+      <div className="aurora-bg">
+        <div className="aurora-blob aurora-blob-1"></div>
+        <div className="aurora-blob aurora-blob-2"></div>
+        <div className="aurora-blob aurora-blob-3"></div>
+      </div>
+
       <div className="tech-bg tech-bg-animated"></div>
       
       {/* Advanced Animated Squares at Left Corner */}
@@ -50,8 +57,8 @@ export default function Hero({ setActiveSection }) {
         <div className="square square-4"></div>
       </div>
 
-      {/* Advanced Animated Squares at Center */}
-      <div className="animated-squares-center">
+      {/* Advanced Animated Squares at Right Corner */}
+      <div className="animated-squares-right">
         <div className="square square-1"></div>
         <div className="square square-2"></div>
         <div className="square square-3"></div>
@@ -82,8 +89,6 @@ export default function Hero({ setActiveSection }) {
           <path d="M-10,70 Q20,90 110,40" className="bg-line bg-line-3" />
         </svg>
       </div>
-      <div className="hero-glow-1" style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)` }}></div>
-      <div className="hero-glow-2" style={{ transform: `translate(${mousePos.x * 40}px, ${mousePos.y * 40}px)` }}></div>
       
       <div className="container hero-container">
         <div className="hero-content">
