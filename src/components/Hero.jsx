@@ -65,30 +65,6 @@ export default function Hero({ setActiveSection }) {
         <div className="square square-4"></div>
       </div>
 
-      <div className="background-lines-wrapper">
-        <svg className="background-lines" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ transform: `translate(${mousePos.x * 10}px, ${mousePos.y * 10}px)` }}>
-          <defs>
-            <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(14, 165, 233, 0)" />
-              <stop offset="50%" stopColor="rgba(14, 165, 233, 0.4)" />
-              <stop offset="100%" stopColor="rgba(14, 165, 233, 0)" />
-            </linearGradient>
-            <linearGradient id="line-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(6, 182, 212, 0)" />
-              <stop offset="30%" stopColor="rgba(6, 182, 212, 0.5)" />
-              <stop offset="100%" stopColor="rgba(6, 182, 212, 0)" />
-            </linearGradient>
-            <linearGradient id="line-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(139, 92, 246, 0)" />
-              <stop offset="70%" stopColor="rgba(139, 92, 246, 0.4)" />
-              <stop offset="100%" stopColor="rgba(139, 92, 246, 0)" />
-            </linearGradient>
-          </defs>
-          <path d="M-10,30 Q40,60 110,30" className="bg-line bg-line-1" />
-          <path d="M-10,50 Q60,20 110,80" className="bg-line bg-line-2" />
-          <path d="M-10,70 Q20,90 110,40" className="bg-line bg-line-3" />
-        </svg>
-      </div>
       
       <div className="container hero-container">
         <div className="hero-content">
