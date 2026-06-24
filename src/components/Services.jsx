@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, Settings, Cloud, Network, Database, X, CheckCircle2 } from 'lucide-react';
+import servicesBgVideo from '../assets/IT services.mp4';
 import './Services.css';
 
 export default function Services() {
@@ -85,6 +86,11 @@ export default function Services() {
 
   return (
     <section id="services" className="section services-section">
+      {/* Background Video */}
+      <video className="services-bg-video" autoPlay loop muted playsInline>
+        <source src={servicesBgVideo} type="video/mp4" />
+      </video>
+
       <div className="aurora-bg">
         <div className="aurora-blob aurora-blob-1"></div>
         <div className="aurora-blob aurora-blob-2"></div>

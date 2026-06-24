@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react';
+import contactVideo from '../assets/7682984-hd_1920_1080_24fps.mp4';
 import './Contact.css';
 
 export default function Contact() {
@@ -43,6 +44,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section contact-section">
+      {/* Background Video */}
+      <video className="contact-bg-video" autoPlay loop muted playsInline>
+        <source src={contactVideo} type="video/mp4" />
+      </video>
+
       <div className="aurora-bg">
         <div className="aurora-blob aurora-blob-1"></div>
         <div className="aurora-blob aurora-blob-2"></div>
@@ -63,7 +69,7 @@ export default function Contact() {
             </p>
 
             <div className="info-cards">
-              <div className="info-card-item glass-panel">
+              <div className="info-card-item">
                 <Phone className="info-icon" />
                 <div className="info-text">
                   <h4>Call Us</h4>
@@ -71,7 +77,7 @@ export default function Contact() {
                   <p>+91 974 669 0000</p>
                 </div>
               </div>
-              <div className="info-card-item glass-panel">
+              <div className="info-card-item">
                 <Mail className="info-icon" />
                 <div className="info-text">
                   <h4>Email Us</h4>
@@ -79,7 +85,7 @@ export default function Contact() {
                   <p>support@comtechsystems.in</p>
                 </div>
               </div>
-              <div className="info-card-item glass-panel">
+              <div className="info-card-item">
                 <MapPin className="info-icon" />
                 <div className="info-text">
                   <h4>Head Office</h4>

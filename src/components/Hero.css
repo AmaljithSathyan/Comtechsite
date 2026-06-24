@@ -149,7 +149,7 @@
 
 .hero-title {
   font-size: 1.45rem;
-  font-weight: 600;
+  font-weight: normal;
   line-height: 1.25;
   letter-spacing: -0.5px;
   margin-bottom: 24px;
@@ -170,30 +170,57 @@
 
 /* Animations */
 .animate-fade-in {
-  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+  animation: premiumFadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-slide-up {
-  animation: slideInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  animation: premiumSlideInUp 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in-delayed {
   opacity: 0;
-  animation: fadeIn 1s ease-out 0.4s forwards;
+  animation: premiumFadeInDelayed 2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideInUp {
+@keyframes premiumFadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    filter: blur(8px);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes premiumSlideInUp {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: perspective(1000px) translateY(60px) rotateX(15deg);
+    letter-spacing: -2px;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: perspective(1000px) translateY(0) rotateX(0);
+    letter-spacing: -0.5px;
+  }
+}
+
+@keyframes premiumFadeInDelayed {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
     transform: translateY(0);
   }
 }
@@ -596,6 +623,7 @@
   pointer-events: none;
   opacity: 0.2; /* 80% transparent */
   filter: grayscale(10%) brightness(0.9) contrast(1.15);
+  transform: scaleX(-1);
   transition: opacity var(--transition-normal);
 }
 

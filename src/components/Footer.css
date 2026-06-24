@@ -73,7 +73,7 @@
   color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 24px;
   position: relative;
 }
