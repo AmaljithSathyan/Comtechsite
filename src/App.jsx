@@ -7,22 +7,40 @@ import Services from './components/Services';
 import Products from './components/Products';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [showContactModal, setShowContactModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
+
+  // Hash-based routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#/about') {
+        setCurrentPage('about');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+    handleHashChange(); // run on mount
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Force dark theme on load
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
 
-  // Scroll Spy and Reveal Animation Effect
+  // Scroll Spy and Reveal Animation Effect (homepage only)
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // offset for headers
+    if (currentPage !== 'home') return;
 
-      // Active Section Spy
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 150;
+
       const sections = ['home', 'about', 'services', 'products', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -40,8 +58,7 @@ export default function App() {
       reveals.forEach((reveal) => {
         const windowHeight = window.innerHeight;
         const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 80; // triggers 80px before coming into view
-
+        const revealPoint = 80;
         if (revealTop < windowHeight - revealPoint) {
           reveal.classList.add('active');
         }
@@ -49,28 +66,32 @@ export default function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Initial run for viewport items
     setTimeout(handleScroll, 100);
-
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentPage]);
 
+  // Render About page
+  if (currentPage === 'about') {
+    return <AboutPage />;
+  }
+
+  // Render Homepage
   return (
     <>
-      <Navbar 
-        activeSection={activeSection} 
-        setActiveSection={setActiveSection} 
+      <Navbar
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
       />
       <Hero setActiveSection={setActiveSection} />
-      <About />
+      <About setCurrentPage={setCurrentPage} />
       <Services />
       <Products />
       <Contact />
       <Footer setActiveSection={setActiveSection} />
 
       {/* Floating Contact Icon */}
-      <button 
-        className="floating-contact-btn" 
+      <button
+        className="floating-contact-btn"
         onClick={() => setShowContactModal(true)}
         aria-label="Quick Contact"
       >

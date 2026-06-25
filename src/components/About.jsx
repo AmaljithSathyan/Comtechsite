@@ -69,8 +69,11 @@ export default function About() {
             <p>
               Comtech Systems is a pioneering IT services company established in 2002, recognized for our unwavering commitment to delivering top-tier solutions. With a proven track record of implementing cutting-edge technologies and fostering innovation, we are dedicated to propelling businesses forward in the ever-evolving landscape of technology and infrastructure.
             </p>
-            <button className="btn btn-primary explore-about-btn">
-              Explore More About US
+            <button 
+              className="btn btn-primary explore-about-btn"
+              onClick={() => { window.location.hash = '#/about'; window.scrollTo({ top: 0, behavior: 'instant' }); }}
+            >
+              Explore More About Us
             </button>
           </div>
           <div className="overview-values">
