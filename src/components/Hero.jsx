@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import servicesVideo from '../assets/14999678_1920_1080_25fps.mp4';
+import authorizedDealerImg from '../assets/Authorized dealer.webp';
 import './Hero.css';
 
 export default function Hero({ setActiveSection }) {
@@ -48,7 +49,7 @@ export default function Hero({ setActiveSection }) {
       </div>
 
       <div className="tech-bg tech-bg-animated"></div>
-      
+
       {/* Advanced Animated Squares at Left Corner */}
       <div className="animated-squares-left">
         <div className="square square-1"></div>
@@ -65,22 +66,22 @@ export default function Hero({ setActiveSection }) {
         <div className="square square-4"></div>
       </div>
 
-      
+
       <div className="container hero-container">
         <div className="hero-content">
           <div className="hero-tag animate-fade-in">
             <span className="tag-pulse"></span>
             Enterprise IT Infrastructure Experts
           </div>
-          
+
           <h1 className="hero-title animate-slide-up">
             Next-Gen <span className="gradient-text">IT Infrastructure</span> For Modern Enterprises.
           </h1>
-          
+
           <p className="hero-subtitle animate-fade-in-delayed">
             Empowering businesses across India since 2002.
           </p>
-          
+
           <div className="hero-actions animate-fade-in-delayed">
             <button onClick={() => handleNavClick('services')} className="btn btn-primary">
               Explore Our Services
@@ -118,6 +119,11 @@ export default function Hero({ setActiveSection }) {
             <p className="metric-label">Support & Maintenance</p>
           </div>
         </div>
+      </div>
+
+      {/* Authorized Dealer Panel */}
+      <div className="authorized-dealer-panel">
+        <img src={authorizedDealerImg} alt="Authorized Dealer Logos" className="authorized-dealer-img" />
       </div>
     </section>
   );
