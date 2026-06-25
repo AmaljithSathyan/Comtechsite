@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MessageSquare, X } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,6 +10,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [showContactModal, setShowContactModal] = useState(false);
 
   // Force dark theme on load
   useEffect(() => {
@@ -65,6 +67,48 @@ export default function App() {
       <Products />
       <Contact />
       <Footer setActiveSection={setActiveSection} />
+
+      {/* Floating Contact Icon */}
+      <button 
+        className="floating-contact-btn" 
+        onClick={() => setShowContactModal(true)}
+        aria-label="Quick Contact"
+      >
+        <MessageSquare size={24} />
+        <span className="btn-ping"></span>
+      </button>
+
+      {/* Quick Contact Modal */}
+      {showContactModal && (
+        <div className="contact-modal-overlay" onClick={() => setShowContactModal(false)}>
+          <div className="contact-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button className="contact-modal-close-btn" onClick={() => setShowContactModal(false)}>
+              <X size={20} />
+            </button>
+            <div className="contact-modal-header">
+              <h3>Quick Contact</h3>
+              <p>Leave your details and we will reach out shortly.</p>
+            </div>
+            <form className="contact-modal-form" onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your details have been submitted.'); setShowContactModal(false); }}>
+              <div className="contact-form-group">
+                <input type="text" placeholder="Full Name" required />
+              </div>
+              <div className="contact-form-group">
+                <input type="email" placeholder="Email Address" required />
+              </div>
+              <div className="contact-form-group">
+                <input type="tel" placeholder="Phone Number" required />
+              </div>
+              <div className="contact-form-group">
+                <textarea placeholder="Message / Requirements" rows="3" required></textarea>
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
