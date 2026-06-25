@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
 import servicesVideo from '../assets/14999678_1920_1080_25fps.mp4';
 import authorizedDealerImg from '../assets/Authorized dealer.webp';
 import './Hero.css';
@@ -83,10 +82,6 @@ export default function Hero({ setActiveSection }) {
           </p>
 
           <div className="hero-actions animate-fade-in-delayed">
-            <button onClick={() => handleNavClick('services')} className="btn btn-primary">
-              Explore Our Services
-              <ArrowRight size={18} />
-            </button>
             <button onClick={() => handleNavClick('contact')} className="btn btn-secondary">
               Request a Consultation
             </button>
