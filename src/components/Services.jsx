@@ -117,6 +117,18 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        <div style={{ marginTop: '55px', textAlign: 'center' }} className="reveal-fade delay-400">
+          <button 
+            className="btn btn-primary" 
+            onClick={() => {
+              window.location.hash = '#/services';
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+          >
+            Explore More Services
+          </button>
+        </div>
       </div>
 
       {/* Details Modal */}

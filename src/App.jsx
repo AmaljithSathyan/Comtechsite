@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
+import ServicesPage from './pages/ServicesPage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -23,6 +24,8 @@ export default function App() {
         setCurrentPage('about');
       } else if (hash === '#/products') {
         setCurrentPage('products');
+      } else if (hash === '#/services') {
+        setCurrentPage('services');
       } else {
         setCurrentPage('home');
       }
@@ -80,6 +83,8 @@ export default function App() {
         <AboutPage />
       ) : currentPage === 'products' ? (
         <ProductsPage />
+      ) : currentPage === 'services' ? (
+        <ServicesPage />
       ) : (
         <>
           <Navbar
