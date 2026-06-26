@@ -8,6 +8,7 @@ import Products from './components/Products';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AboutPage from './pages/AboutPage';
+import ProductsPage from './pages/ProductsPage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -20,6 +21,8 @@ export default function App() {
       const hash = window.location.hash;
       if (hash === '#/about') {
         setCurrentPage('about');
+      } else if (hash === '#/products') {
+        setCurrentPage('products');
       } else {
         setCurrentPage('home');
       }
@@ -70,24 +73,27 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [currentPage]);
 
-  // Render About page
-  if (currentPage === 'about') {
-    return <AboutPage />;
-  }
-
-  // Render Homepage
+  // Render App with dynamic main page content and persistent quick contact
   return (
     <>
-      <Navbar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
-      <Hero setActiveSection={setActiveSection} />
-      <About setCurrentPage={setCurrentPage} />
-      <Services />
-      <Products />
-      <Contact />
-      <Footer setActiveSection={setActiveSection} />
+      {currentPage === 'about' ? (
+        <AboutPage />
+      ) : currentPage === 'products' ? (
+        <ProductsPage />
+      ) : (
+        <>
+          <Navbar
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+          />
+          <Hero setActiveSection={setActiveSection} />
+          <About setCurrentPage={setCurrentPage} />
+          <Services />
+          <Products />
+          <Contact />
+          <Footer setActiveSection={setActiveSection} />
+        </>
+      )}
 
       {/* Floating Contact Icon */}
       <button

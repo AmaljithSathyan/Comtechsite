@@ -197,7 +197,7 @@
 }
 
 .ap-stats-grid {
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -395,7 +395,7 @@
 }
 
 .ap-vm-inner {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -403,7 +403,7 @@
 .ap-vm-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 64px;
   min-height: 380px;
 }
 
@@ -447,7 +447,7 @@
 }
 
 .ap-vm-content {
-  padding: 48px 100px;
+  padding: 48px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -527,7 +527,7 @@
   justify-content: center;
   gap: 48px;
   flex-wrap: wrap;
-  max-width: 900px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -576,7 +576,7 @@
 }
 
 .ap-prop-inner {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -772,7 +772,7 @@
 }
 
 .ap-btw-inner {
-  max-width: 1100px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 

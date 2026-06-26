@@ -3,8 +3,24 @@ import { Phone, Mail, MapPin, Linkedin, Facebook, Twitter, ShieldAlert } from 'l
 import businessLogo from '../assets/BusinessLogo.webp';
 import './Footer.css';
 
-export default function Footer({ setActiveSection }) {
+export default function Footer({ setActiveSection, isAboutPage, goBack }) {
   const handleNavClick = (sectionId) => {
+    if (isAboutPage && goBack) {
+      window.location.hash = '';
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const offsetPosition = (elementRect - bodyRect) - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 150);
+      return;
+    }
+
     setActiveSection(sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
