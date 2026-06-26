@@ -2,14 +2,211 @@
   background-color: #ffffff;
   color: #0f172a;
   position: relative;
-  padding: 100px 0;
+  padding: 160px 0;
+  overflow: hidden;
 }
 
 /* Light Theme Contrast Overrides for Products Section */
 .products-section .section-title {
   color: #0f172a !important;
+  margin-bottom: 20px;
 }
 
 .products-section .section-subtitle {
-  color: #334155 !important;
+  color: #475569 !important;
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+.btn-explore-main {
+  padding: 14px 36px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+  position: relative;
+  z-index: 3;
+}
+
+/* ───────────────────────────────────────────
+   BACKGROUND ILLUSTRATIONS
+   ─────────────────────────────────────────── */
+.products-bg-illustrations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bg-illus-item {
+  position: absolute;
+  opacity: 0.12; /* Subtly integrated in the background */
+  width: 140px;
+  height: 110px;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 8px 24px rgba(14, 165, 233, 0.12));
+}
+
+.illus-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Positioning & Floating Animations */
+.bg-illus-laptop {
+  top: 15%;
+  left: 8%;
+  animation: floatSlow1 12s ease-in-out infinite;
+}
+
+.bg-illus-desktop {
+  top: 18%;
+  right: 8%;
+  animation: floatSlow2 14s ease-in-out infinite;
+}
+
+.bg-illus-printer {
+  bottom: 15%;
+  left: 10%;
+  animation: floatSlow3 16s ease-in-out infinite;
+}
+
+.bg-illus-firewall {
+  bottom: 18%;
+  right: 10%;
+  animation: floatSlow4 15s ease-in-out infinite;
+}
+
+.bg-illus-tablet {
+  top: 45%;
+  right: 25%;
+  animation: floatSlow5 18s ease-in-out infinite;
+  opacity: 0.08;
+  width: 120px;
+}
+
+/* Floating Animations */
+@keyframes floatSlow1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes floatSlow2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(18px) rotate(-4deg); }
+}
+
+@keyframes floatSlow3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.04); }
+}
+
+@keyframes floatSlow4 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(15px) rotate(5deg); }
+}
+
+@keyframes floatSlow5 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(-3deg); }
+}
+
+/* ───────────────────────────────────────────
+   SVG INNER ANIMATIONS (LOOPING)
+   ─────────────────────────────────────────── */
+
+/* Laptop Screens */
+.laptop-svg .anim-line-1 { animation: pulseLine 1.6s infinite 0.1s; }
+.laptop-svg .anim-line-2 { animation: pulseLine 1.6s infinite 0.3s; }
+.laptop-svg .anim-line-3 { animation: pulseLine 1.6s infinite 0.5s; }
+.laptop-svg .anim-line-4 { animation: pulseLine 1.6s infinite 0.7s; }
+
+@keyframes pulseLine {
+  0%, 100% { opacity: 0.2; stroke-width: 2px; }
+  50% { opacity: 1; stroke-width: 3px; }
+}
+
+/* Desktop Monitor Charts */
+.desktop-svg .anim-path {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: drawChart 3s ease-in-out infinite;
+}
+
+@keyframes drawChart {
+  0%, 10% { stroke-dashoffset: 80; }
+  60%, 100% { stroke-dashoffset: 0; }
+}
+
+/* LED Blinkers */
+.anim-led {
+  animation: blinkLed 1.5s step-end infinite;
+}
+
+@keyframes blinkLed {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Printer Paper Feed */
+.printer-svg .anim-paper {
+  animation: feedPaper 3s ease-in-out infinite;
+}
+
+@keyframes feedPaper {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  60%, 80% { transform: translateY(-8px); opacity: 1; }
+}
+
+/* Firewall scanner sweep */
+.firewall-svg .anim-scanner {
+  animation: scanLine 2s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+  0%, 100% { transform: translateY(-4px); opacity: 0.2; }
+  50% { transform: translateY(28px); opacity: 1; }
+}
+
+/* Tablet touch pulse */
+.tablet-svg .anim-touch-pulse {
+  transform-origin: 50px 34px;
+  animation: pulseRing 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ───────────────────────────────────────────
+   RESPONSIVE DESIGN OVERRIDES
+   ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .bg-illus-item {
+    width: 110px;
+    height: 90px;
+  }
+  .bg-illus-laptop { left: 4%; top: 10%; }
+  .bg-illus-desktop { right: 4%; top: 12%; }
+  .bg-illus-printer { left: 5%; bottom: 10%; }
+  .bg-illus-firewall { right: 5%; bottom: 12%; }
+  .bg-illus-tablet { display: none; } /* Hide center one on smaller viewports */
+}
+
+@media (max-width: 768px) {
+  .products-section {
+    padding: 100px 0;
+  }
+  .bg-illus-item {
+    width: 90px;
+    height: 75px;
+    opacity: 0.08; /* Make them even more subtle on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-illus-item {
+    display: none; /* Hide background illustrations on narrow screens to avoid clutter */
+  }
 }
