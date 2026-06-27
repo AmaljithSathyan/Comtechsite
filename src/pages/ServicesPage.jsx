@@ -356,7 +356,7 @@ export default function ServicesPage() {
                 <div 
                   key={svc.id} 
                   className="sp-service-card" 
-                  style={{ '--card-delay': `${(index % 3) * 0.08}s` }}
+                  style={{ '--sp-card-delay': `${(index % 3) * 0.08}s` }}
                 >
                   <div className="sp-card-icon-box">
                     {svc.icon}

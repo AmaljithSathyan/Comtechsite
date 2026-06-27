@@ -244,12 +244,16 @@
   padding: 36px 30px;
   display: flex;
   flex-direction: column;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   
   /* Scroll anim triggers */
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 }
 
 .sp-service-card.is-visible {
