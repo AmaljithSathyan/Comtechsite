@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
+import {
   ArrowLeft, Search, ShieldAlert, Network, Monitor, Laptop, Cpu, Tablet, Printer, X, ArrowRight
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './ProductsPage.css';
-import motion2Video from '../assets/motion2.mp4';
+import itServicesVideo from '../assets/IT services.mp4';
+import Particles from '../components/Particles';
 
 /* ─────────────── Data ─────────────── */
 const categoryDivisions = [
@@ -277,30 +278,43 @@ export default function ProductsPage() {
 
   const filteredProducts = productsData.filter((prod) => {
     const matchesCategory = activeCategory === null || searchQuery !== '' || prod.category === activeCategory;
-    const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          prod.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          prod.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      prod.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      prod.desc.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="products-page" ref={containerRef}>
       {/* ── Shared Navbar ── */}
-      <Navbar activeSection="products" setActiveSection={() => {}} isAboutPage goBack={goBack} />
+      <Navbar activeSection="products" setActiveSection={() => { }} isAboutPage goBack={goBack} />
 
       {/* ════════════════════════════════════
           HERO HEADER
           ════════════════════════════════════ */}
       <section className="pp-hero">
         <div className="pp-hero-bg">
-          <video 
-            src={motion2Video} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
+          <video
+            src={itServicesVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
             className="pp-hero-video"
           />
+          <div className="pp-hero-particles-bg">
+            <Particles
+              particleColors={["#0ea5e9", "#00d8ff", "#3b82f6", "#ffffff"]}
+              particleCount={170}
+              particleSpread={8.5}
+              speed={0.13}
+              particleBaseSize={85}
+              moveParticlesOnHover={true}
+              particleHoverFactor={0.8}
+              alphaParticles={true}
+              disableRotation={false}
+            />
+          </div>
           <div className="pp-hero-blob pp-hero-blob-1" />
           <div className="pp-hero-blob pp-hero-blob-2" />
           <div className="pp-hero-grid" />
@@ -329,8 +343,8 @@ export default function ProductsPage() {
         <div className="pp-container">
           <div className="pp-search-wrapper pp-reveal active" style={{ marginBottom: 0 }}>
             <Search className="pp-search-icon" size={20} />
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder="Search by product name, brand, or features..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -345,15 +359,15 @@ export default function ProductsPage() {
           ════════════════════════════════════ */}
       <section className="pp-listings-section">
         <div className="pp-container">
-          
+
           {/* If Category Overview Mode (activeCategory is null and searchQuery is empty) */}
           {activeCategory === null && searchQuery === '' ? (
             <div className={`pp-categories-list`}>
               {categoryDivisions.map((cat, index) => {
                 const isEven = index % 2 === 0;
                 return (
-                  <div 
-                    key={cat.id} 
+                  <div
+                    key={cat.id}
                     className={`pp-anim-row pp-category-row ${isEven ? 'row-normal' : 'row-reversed'}`}
                     style={{ cursor: 'pointer', '--row-delay': `${index * 0.08}s` }}
                     onClick={() => {
@@ -362,7 +376,7 @@ export default function ProductsPage() {
                     }}
                   >
                     {/* Column 1: Info */}
-                    <div 
+                    <div
                       className="pp-category-info-col"
                       onClick={() => {
                         setActiveCategory(cat.id);
@@ -372,7 +386,7 @@ export default function ProductsPage() {
                       <span className="pp-category-tag">{cat.tag}</span>
                       <h2 className="pp-category-title">{cat.title}</h2>
                       <p className="pp-category-desc">{cat.desc}</p>
-                      <button 
+                      <button
                         className="btn btn-secondary pp-explore-btn"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -385,7 +399,7 @@ export default function ProductsPage() {
                     </div>
 
                     {/* Column 2: Visual Card */}
-                    <div 
+                    <div
                       className="pp-category-visual-col"
                       onClick={() => {
                         setActiveCategory(cat.id);
@@ -395,10 +409,10 @@ export default function ProductsPage() {
                       <div className="pp-category-visual-card glass-panel">
                         <div className="pp-category-visual-glow" />
                         <div className="pp-category-image-wrapper">
-                          <img 
-                            src={cat.image} 
-                            alt={cat.title} 
-                            className="pp-category-image" 
+                          <img
+                            src={cat.image}
+                            alt={cat.title}
+                            className="pp-category-image"
                           />
                         </div>
                       </div>
@@ -410,10 +424,10 @@ export default function ProductsPage() {
           ) : (
             /* Individual Products Mode */
             <div className="pp-products-view-container">
-              
+
               {/* Back to Categories header (only when searching or a category is selected) */}
               <div className="pp-view-header pp-reveal active">
-                <button 
+                <button
                   className="btn btn-secondary pp-back-btn"
                   onClick={() => {
                     setActiveCategory(null);
@@ -423,8 +437,8 @@ export default function ProductsPage() {
                   <ArrowLeft size={16} /> Back to Product Types
                 </button>
                 <h3 className="pp-results-heading">
-                  {searchQuery !== '' 
-                    ? `Search Results for "${searchQuery}"` 
+                  {searchQuery !== ''
+                    ? `Search Results for "${searchQuery}"`
                     : `${categoryDivisions.find(c => c.id === activeCategory)?.tag} Listings`
                   }
                 </h3>
@@ -435,8 +449,8 @@ export default function ProductsPage() {
                   {filteredProducts.map((prod, index) => {
                     const isEven = index % 2 === 0;
                     return (
-                      <div 
-                        key={prod.id} 
+                      <div
+                        key={prod.id}
                         className={`pp-anim-row pp-product-row ${isEven ? 'row-normal' : 'row-reversed'}`}
                         style={{ '--row-delay': `${index * 0.1}s` }}
                       >
@@ -445,7 +459,7 @@ export default function ProductsPage() {
                           <span className="pp-product-brand">{prod.brand}</span>
                           <h2 className="pp-product-name">{prod.name}</h2>
                           <p className="pp-product-desc">{prod.desc}</p>
-                          
+
                           <div className="pp-product-specs">
                             <h4>Specifications Checklist</h4>
                             <ul className="pp-specs-list">
@@ -458,7 +472,7 @@ export default function ProductsPage() {
                             </ul>
                           </div>
 
-                          <button 
+                          <button
                             className="btn btn-primary pp-quote-btn"
                             onClick={() => handleQuoteClick(prod.name)}
                           >
@@ -471,10 +485,10 @@ export default function ProductsPage() {
                           <div className="pp-visual-card glass-panel">
                             <div className="pp-visual-glow" />
                             <div className="pp-visual-image-wrapper">
-                              <img 
-                                src={prod.image} 
-                                alt={prod.name} 
-                                className="pp-visual-image" 
+                              <img
+                                src={prod.image}
+                                alt={prod.name}
+                                className="pp-visual-image"
                               />
                             </div>
                           </div>
@@ -500,7 +514,7 @@ export default function ProductsPage() {
       </section>
 
       {/* ── Shared Footer ── */}
-      <Footer setActiveSection={() => {}} isAboutPage goBack={goBack} />
+      <Footer setActiveSection={() => { }} isAboutPage goBack={goBack} />
     </div>
   );
 }

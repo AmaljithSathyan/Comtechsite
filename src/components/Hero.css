@@ -811,4 +811,12 @@
     height: 36px;
     margin-left: -80px;
   }
+}
+
+.hero-particles-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
 }

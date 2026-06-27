@@ -6,6 +6,8 @@ import {
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './ServicesPage.css';
+import servicesVideo from '../assets/services123.mp4';
+import Particles from '../components/Particles';
 
 /* ─────────────── Data ─────────────── */
 const servicesData = [
@@ -277,6 +279,27 @@ export default function ServicesPage() {
           ════════════════════════════════════ */}
       <section className="sp-hero">
         <div className="sp-hero-bg">
+          <video 
+            src={servicesVideo} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="sp-hero-video"
+          />
+          <div className="sp-hero-particles-bg">
+            <Particles
+              particleColors={["#0ea5e9", "#00d8ff", "#3b82f6", "#ffffff"]}
+              particleCount={160}
+              particleSpread={7.5}
+              speed={0.11}
+              particleBaseSize={85}
+              moveParticlesOnHover={true}
+              particleHoverFactor={0.75}
+              alphaParticles={true}
+              disableRotation={false}
+            />
+          </div>
           <div className="sp-hero-blob sp-hero-blob-1" />
           <div className="sp-hero-blob sp-hero-blob-2" />
           <div className="sp-hero-grid" />

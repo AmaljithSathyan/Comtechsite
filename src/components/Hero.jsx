@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import servicesVideo from '../assets/14999678_1920_1080_25fps.mp4';
 import authorizedDealerImg from '../assets/Authorized dealer.webp';
 import './Hero.css';
+import Particles from './Particles';
 
 export default function Hero({ setActiveSection }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -39,6 +40,21 @@ export default function Hero({ setActiveSection }) {
       <video className="hero-bg-video" autoPlay loop muted playsInline>
         <source src={servicesVideo} type="video/mp4" />
       </video>
+
+      {/* Particles effect overlay */}
+      <div className="hero-particles-bg">
+        <Particles
+          particleColors={["#0ea5e9", "#00d8ff", "#3b82f6", "#ffffff"]}
+          particleCount={180}
+          particleSpread={7}
+          speed={0.12}
+          particleBaseSize={85}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.8}
+          alphaParticles={true}
+          disableRotation={false}
+        />
+      </div>
 
       {/* Aurora Background */}
       <div className="aurora-bg">

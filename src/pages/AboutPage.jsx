@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowLeft, ChevronDown, ArrowRight, ExternalLink, Facebook, Linkedin, Twitter
 } from 'lucide-react';
@@ -6,6 +6,11 @@ import './AboutPage.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import abcdVideo from '../assets/abcd.mp4';
+import itServicesVideo from '../assets/IT services.mp4';
+import motionGraphicsVideo from '../assets/motion graphics.mp4';
+import handshakeBg from '../assets/handshake.png';
+import thumbsupBg from '../assets/thumbsup.png';
+import Particles from '../components/Particles';
 
 /* ─────────────── Data ─────────────── */
 const stats = [
@@ -16,6 +21,36 @@ const stats = [
 ];
 
 const partners = ['HP', 'SOPHOS', 'SAMSUNG', 'LENOVO'];
+
+const testimonials = [
+  {
+    quote: "Comtech Systems has been instrumental in modernizing our enterprise network. Their Tier-1 server setup and continuous SLA-backed maintenance have kept our operations running 24/7 with zero downtime.",
+    author: "Rajesh Nair",
+    role: "Director of IT Operations",
+    company: "Kerala State Financial Enterprise",
+    rating: 5,
+    avatar: "RN",
+    video: itServicesVideo
+  },
+  {
+    quote: "The cybersecurity protocols deployed by Comtech revolutionized our digital safety. From threat detection to network perimeter optimization, we feel completely secure under their vigilance.",
+    author: "Meera Krishnan",
+    role: "Chief Information Security Officer",
+    company: "Cochin Shipyard Limited",
+    rating: 5,
+    avatar: "MK",
+    video: abcdVideo
+  },
+  {
+    quote: "Their round-the-clock AMC support is stellar. Every time we face hardware or configuration queries, their certified engineer team is on-site within hours. A truly reliable partner.",
+    author: "Vikram R. Shah",
+    role: "General Manager - Infrastructure",
+    company: "Muthoot Finance Group",
+    rating: 5,
+    avatar: "VS",
+    video: motionGraphicsVideo
+  }
+];
 
 const propositions = [
   {
@@ -190,6 +225,99 @@ const MissionIllustration = () => (
 
 /* ─────────────── Component ─────────────── */
 export default function AboutPage() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [direction, setDirection] = useState('next'); // 'next' or 'prev'
+  const autoPlayRef = useRef();
+  const swipeStartX = useRef(0);
+  const swipeEndX = useRef(0);
+  const isSwiping = useRef(false);
+
+  useEffect(() => {
+    setProgress(0);
+    const duration = 6000; // 6 seconds
+    const intervalTime = 50; // Update progress every 50ms
+    const step = (intervalTime / duration) * 100;
+
+    autoPlayRef.current = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setDirection('next');
+          setActiveTestimonial((prevIndex) => (prevIndex + 1) % testimonials.length);
+          return 0;
+        }
+        return prev + step;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(autoPlayRef.current);
+  }, [activeTestimonial]);
+
+  const nextTestimonial = () => {
+    setDirection('next');
+    setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setDirection('prev');
+    setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const resetAutoPlay = () => {
+    setProgress(0);
+  };
+
+  const handleTouchStart = (e) => {
+    swipeStartX.current = e.touches[0].clientX;
+    isSwiping.current = true;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isSwiping.current) return;
+    swipeEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isSwiping.current) return;
+    isSwiping.current = false;
+    handleSwipeGesture();
+  };
+
+  const handleMouseDown = (e) => {
+    swipeStartX.current = e.clientX;
+    isSwiping.current = true;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isSwiping.current) return;
+    swipeEndX.current = e.clientX;
+  };
+
+  const handleMouseUp = () => {
+    if (!isSwiping.current) return;
+    isSwiping.current = false;
+    handleSwipeGesture();
+  };
+
+  const handleMouseLeave = () => {
+    if (isSwiping.current) {
+      isSwiping.current = false;
+    }
+  };
+
+  const handleSwipeGesture = () => {
+    const diffX = swipeStartX.current - swipeEndX.current;
+    const threshold = 50; // min 50px swipe
+    if (Math.abs(diffX) > threshold) {
+      if (diffX > 0) {
+        nextTestimonial();
+      } else {
+        prevTestimonial();
+      }
+    }
+    swipeStartX.current = 0;
+    swipeEndX.current = 0;
+  };
 
   // Scroll reveal logic (mirrors App.jsx)
   useEffect(() => {
@@ -279,6 +407,19 @@ export default function AboutPage() {
             playsInline 
             className="ap-hero-video"
           />
+          <div className="ap-hero-particles-bg">
+            <Particles
+              particleColors={["#0ea5e9", "#c084fc", "#3b82f6", "#ffffff"]}
+              particleCount={150}
+              particleSpread={8}
+              speed={0.1}
+              particleBaseSize={80}
+              moveParticlesOnHover={true}
+              particleHoverFactor={0.7}
+              alphaParticles={true}
+              disableRotation={false}
+            />
+          </div>
           <div className="ap-hero-blob ap-hero-blob-1" />
           <div className="ap-hero-blob ap-hero-blob-2" />
           <div className="ap-hero-blob ap-hero-blob-3" />
@@ -400,6 +541,7 @@ export default function AboutPage() {
           OUR PROPOSITION
           ════════════════════════════════════ */}
       <div className="ap-prop-section">
+        <div className="ap-prop-bg-illustration" />
         <div className="ap-prop-inner">
           <div className="ap-prop-grid">
             <div>
@@ -492,12 +634,113 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* ════════════════════════════════════
+          TESTIMONIALS SECTION
+          ════════════════════════════════════ */}
+      <div className="ap-testimonials-section">
+        <div className="ap-testimonials-inner">
+          <div className="ap-testimonials-header">
+            <div className="ap-label ap-reveal" style={{ justifyContent: 'center' }}>Testimonials</div>
+            <h2 className="ap-reveal ap-delay-100">What Our Clients Say</h2>
+            <p className="ap-reveal ap-delay-200">Hear from the technology leaders and enterprise partners who trust Comtech to power their daily infrastructure.</p>
+          </div>
 
+          <div className="ap-testimonial-carousel ap-reveal ap-delay-300">
+            <div 
+              className="ap-testimonial-card-wrapper"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="ap-testimonial-quote-mark">“</div>
+              <div key={activeTestimonial} className={`ap-testimonial-card slide-${direction}`}>
+                {/* Video Column */}
+                <div className="ap-testimonial-video-container">
+                  <video
+                    key={activeTestimonial}
+                    src={testimonials[activeTestimonial].video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="ap-testimonial-video"
+                  />
+                  <div className="ap-testimonial-video-badge">
+                    <span className="live-dot" /> VIDEO TESTIMONIAL
+                  </div>
+                </div>
+
+                {/* Text Content Column */}
+                <div className="ap-testimonial-body-container">
+                  <div className="ap-testimonial-stars">
+                    {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
+                      <span key={i} className="star-icon">★</span>
+                    ))}
+                  </div>
+                  
+                  <p className="ap-testimonial-text">
+                    "{testimonials[activeTestimonial].quote}"
+                  </p>
+                  
+                  <div className="ap-testimonial-footer">
+                    <div className="ap-testimonial-avatar">
+                      {testimonials[activeTestimonial].avatar}
+                    </div>
+                    <div className="ap-testimonial-meta">
+                      <div className="ap-testimonial-author">{testimonials[activeTestimonial].author}</div>
+                      <div className="ap-testimonial-role-company">
+                        {testimonials[activeTestimonial].role} · <span className="gradient-text">{testimonials[activeTestimonial].company}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Controls */}
+            <div className="ap-testimonial-controls">
+              <button className="carousel-btn prev" onClick={prevTestimonial} aria-label="Previous testimonial">
+                <ArrowLeft size={20} />
+              </button>
+              <div className="ap-testimonial-dots">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`carousel-dot ${index === activeTestimonial ? 'active' : ''}`}
+                    onClick={() => {
+                      setDirection(index > activeTestimonial ? 'next' : 'prev');
+                      setActiveTestimonial(index);
+                      resetAutoPlay();
+                    }}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+              <button className="carousel-btn next" onClick={nextTestimonial} aria-label="Next testimonial">
+                <ArrowRight size={20} />
+              </button>
+            </div>
+            
+            {/* Auto-play progress bar */}
+            <div className="ap-testimonial-progress-bar">
+              <div 
+                className="ap-testimonial-progress-fill" 
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* ════════════════════════════════════
           CTA BANNER
           ════════════════════════════════════ */}
       <div className="ap-cta">
+        <div className="ap-cta-bg-illustration" />
         <div className="ap-cta-blob" />
         <div className="ap-cta-inner">
           <h2 className="ap-cta-inner-heading ap-reveal">

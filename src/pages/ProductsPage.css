@@ -54,7 +54,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.2; /* 80% transparency */
+  opacity: 0.3;
+  /* 70% transparency */
 }
 
 .pp-hero-blob {
@@ -83,13 +84,27 @@
 }
 
 @keyframes ppFloatBlob1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 20px) scale(1.06); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, 20px) scale(1.06);
+  }
 }
 
 @keyframes ppFloatBlob2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20px, -30px) scale(1.05); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-20px, -30px) scale(1.05);
+  }
 }
 
 .pp-hero-grid {
@@ -134,8 +149,17 @@
 }
 
 @keyframes ppPing {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.6); opacity: 0.4; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
 }
 
 .pp-hero-title {
@@ -160,8 +184,15 @@
 
 /* ─── Hero content staggered entry keyframes ─── */
 @keyframes ppHeroFadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ───────────────────────────────────────────
@@ -169,13 +200,10 @@
    ─────────────────────────────────────────── */
 .pp-controls-section {
   padding: 40px 0;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  top: 70px;
+  position: relative;
   z-index: 10;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .pp-search-wrapper {
@@ -611,8 +639,15 @@
 }
 
 @keyframes ppFloatImage {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
 }
 
 /* Hover effects for visual card */
@@ -717,6 +752,7 @@
    RESPONSIVE DESIGN
    ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
+
   .pp-product-row,
   .pp-product-row.row-reversed,
   .pp-category-row,
@@ -724,32 +760,32 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .pp-product-row.row-reversed .pp-product-visual-col,
   .pp-category-row.row-reversed .pp-category-visual-col {
     order: 0;
   }
-  
+
   .pp-product-info-col,
   .pp-category-info-col {
     order: 2;
   }
-  
+
   .pp-product-visual-col,
   .pp-category-visual-col {
     order: 1;
   }
-  
+
   .pp-products-list,
   .pp-categories-list {
     gap: 80px;
   }
-  
+
   .pp-controls-section {
     position: relative;
     top: 0;
   }
-  
+
   /* On mobile, switch to vertical fade-up instead of horizontal slide */
   .pp-anim-row.row-normal .pp-category-info-col,
   .pp-anim-row.row-normal .pp-product-info-col,
@@ -778,16 +814,16 @@
     min-height: 80vh;
     padding: 130px 24px 70px;
   }
-  
+
   .pp-product-name,
   .pp-category-title {
     font-size: 1.8rem;
   }
-  
+
   .pp-specs-list {
     grid-template-columns: 1fr;
   }
-  
+
   .pp-tab-btn {
     padding: 8px 18px;
     font-size: 0.82rem;
@@ -798,9 +834,10 @@
   .pp-tabs-container {
     gap: 8px;
   }
-  
+
   .pp-tab-btn span {
-    display: none; /* Icon-only tabs on tiny mobile screens */
+    display: none;
+    /* Icon-only tabs on tiny mobile screens */
   }
 }
 
@@ -810,21 +847,34 @@
   color: #cbd5e1;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .products-page .footer .footer-title {
   color: #f8fafc;
 }
+
 .products-page .footer .links-list li button {
   color: #cbd5e1;
 }
+
 .products-page .footer .social-link {
   background-color: #1f2937;
   color: #f8fafc;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .products-page .footer .brand-tagline {
   color: #cbd5e1;
 }
+
 .products-page .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #64748b;
+}
+
+.pp-hero-particles-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
 }
