@@ -769,7 +769,7 @@
   width: auto;
   object-fit: contain;
   display: block;
-  margin-left: -110px; /* offset the blank left space inside the webp */
+  transform: translateX(-110px); /* offset the blank left space inside the webp visually without breaking layout */
   flex-shrink: 0;
 }
 
@@ -799,7 +799,7 @@
   
   .authorized-dealer-img {
     height: 36px;
-    margin-left: -80px;
+    transform: translateX(-80px);
   }
 }
 
