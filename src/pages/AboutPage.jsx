@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import abcdVideo from '../assets/abcd.mp4';
 import itServicesVideo from '../assets/IT services.mp4';
-import motionGraphicsVideo from '../assets/motion graphics.mp4';
+import motionGraphicsVideo from '../assets/motion2.mp4';
 import handshakeBg from '../assets/handshake.png';
 import thumbsupBg from '../assets/thumbsup.png';
 import Particles from '../components/Particles';
